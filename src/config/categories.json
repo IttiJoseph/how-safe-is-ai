@@ -1,0 +1,215 @@
+[
+  {
+    "id": "prompt-injection",
+    "name": "Prompt Injection",
+    "priority": 1,
+    "description": "An attacker crafts input that hijacks an AI model's instructions — the digital equivalent of putting words in someone's mouth. The model executes the attacker's intent instead of the user's.",
+    "whyItLooksThisWay": "Tendrils radiate from a central mass — injection attacks penetrate inward then propagate outward through the system. The more tendrils you see, the more attack vectors have been discovered.",
+    "keywords": [
+      "prompt injection",
+      "jailbreak",
+      "instruction injection",
+      "prompt manipulation",
+      "indirect injection"
+    ],
+    "productDefaults": ["OpenAI plugins"],
+    "pattern": "radiating-tendrils",
+    "colors": {
+      "agar": "#fce4ec",
+      "primary": "#e91e63",
+      "secondary": "#880e4f",
+      "accent": "#f8bbd0"
+    }
+  },
+  {
+    "id": "improper-output-handling",
+    "name": "Improper Output Handling",
+    "priority": 2,
+    "description": "Downstream systems blindly trust what the AI model produces, leading to cross-site scripting, server-side request forgery, or code injection. The vulnerability isn't in the model — it's in what happens after.",
+    "whyItLooksThisWay": "Chaotic splatter with no clear structure — outputs spray unpredictably in all directions when downstream systems don't sanitize what the model produces.",
+    "keywords": [
+      "output handling",
+      "XSS",
+      "SSRF",
+      "code injection via output",
+      "unsanitized output",
+      "downstream execution"
+    ],
+    "productDefaults": [],
+    "pattern": "random-splatter",
+    "colors": {
+      "agar": "#fbe9e7",
+      "primary": "#2196f3",
+      "secondary": "#ff5722",
+      "accent": "#ffccbc"
+    }
+  },
+  {
+    "id": "model-poisoning",
+    "name": "Model Poisoning",
+    "priority": 3,
+    "description": "An attacker corrupts the training data or model weights, embedding hidden behaviors that activate under specific conditions. The model looks normal but carries a silent infection.",
+    "whyItLooksThisWay": "A dense, dark core with speckled contamination spreading at the edges — poisoned training data corrupts from within, slowly infecting the whole model outward.",
+    "keywords": [
+      "poisoning",
+      "backdoor",
+      "adversarial",
+      "trojan",
+      "evasion attack",
+      "training data attack"
+    ],
+    "productDefaults": ["TensorFlow", "PyTorch"],
+    "pattern": "central-mass-speckled",
+    "colors": {
+      "agar": "#fff9c4",
+      "primary": "#795548",
+      "secondary": "#ff8f00",
+      "accent": "#4e342e"
+    }
+  },
+  {
+    "id": "data-leakage",
+    "name": "Data Leakage",
+    "priority": 4,
+    "description": "Sensitive information — personal data, proprietary content, training examples — seeps out of the model through carefully crafted queries. The model becomes an unintentional informant.",
+    "whyItLooksThisWay": "Concentric rings bleeding outward — data seeps through boundaries it shouldn't cross, each ring representing a layer of protection that failed to contain it.",
+    "keywords": [
+      "data leak",
+      "exfiltration",
+      "PII",
+      "membership inference",
+      "model inversion",
+      "training data extract",
+      "information disclosure"
+    ],
+    "productDefaults": ["Ollama"],
+    "pattern": "concentric-rings",
+    "colors": {
+      "agar": "#fffde7",
+      "primary": "#1565c0",
+      "secondary": "#0d47a1",
+      "accent": "#fdd835"
+    }
+  },
+  {
+    "id": "denial-of-service",
+    "name": "Denial of Service",
+    "priority": 5,
+    "description": "Crafted inputs cause extreme compute costs, infinite loops, or memory exhaustion. The AI system is overwhelmed and stops functioning — not by breaking in, but by consuming everything.",
+    "whyItLooksThisWay": "Aggressive overgrowth consuming the entire dish — resource exhaustion attacks take everything available until nothing else can function. The fuller the dish, the worse the problem.",
+    "keywords": [
+      "denial of service",
+      "resource exhaustion",
+      "memory exhaustion",
+      "infinite loop",
+      "OOM",
+      "CPU exhaustion",
+      "crash"
+    ],
+    "productDefaults": [],
+    "pattern": "aggressive-overgrowth",
+    "colors": {
+      "agar": "#e8f5e9",
+      "primary": "#4caf50",
+      "secondary": "#2196f3",
+      "accent": "#1b5e20"
+    }
+  },
+  {
+    "id": "supply-chain",
+    "name": "Supply Chain",
+    "priority": 6,
+    "description": "Malicious packages, compromised model weights, or vulnerable dependencies in ML libraries. The attack comes not through the AI itself, but through the tools and libraries used to build it.",
+    "whyItLooksThisWay": "Scattered, unrelated colonies from different sources — each one is a compromised dependency, a different entry point the developer didn't control or even know about.",
+    "keywords": [
+      "dependency",
+      "package",
+      "deserialization",
+      "arbitrary code",
+      "remote code execution",
+      "path traversal",
+      "pickle",
+      "unsafe load"
+    ],
+    "productDefaults": ["HuggingFace", "MLflow"],
+    "pattern": "scattered-colonies",
+    "colors": {
+      "agar": "#212121",
+      "primary": "#2196f3",
+      "secondary": "#ff9800",
+      "accent": "#e91e63"
+    }
+  },
+  {
+    "id": "model-theft",
+    "name": "Model Theft",
+    "priority": 7,
+    "description": "Attackers steal model weights, clone models through repeated API queries, or gain unauthorized access to proprietary AI systems. Months of training and millions in compute, extracted.",
+    "whyItLooksThisWay": "Branching veins reaching toward the edges — extraction attacks extend outward, pulling proprietary knowledge out of the model bit by bit through systematic probing.",
+    "keywords": [
+      "model theft",
+      "model extraction",
+      "model cloning",
+      "unauthorized access",
+      "weight exfiltration",
+      "API abuse"
+    ],
+    "productDefaults": [],
+    "pattern": "branching-veins",
+    "colors": {
+      "agar": "#e0f2f1",
+      "primary": "#00897b",
+      "secondary": "#004d40",
+      "accent": "#ffffff"
+    }
+  },
+  {
+    "id": "agentic-autonomy",
+    "name": "Agentic Autonomy",
+    "priority": 8,
+    "description": "AI agents act beyond their intended boundaries — misusing tools, executing unintended code, or making autonomous decisions without proper guardrails. The system does what it wasn't supposed to.",
+    "whyItLooksThisWay": "A central cluster with satellite blobs breaking away — autonomous agents spawning uncontrolled actions, each satellite a decision made beyond the intended boundary.",
+    "keywords": [
+      "agent",
+      "agentic",
+      "tool call",
+      "function calling",
+      "plugin",
+      "autonomous",
+      "sandbox escape",
+      "MCP",
+      "code execution"
+    ],
+    "productDefaults": ["LangChain", "AutoGPT", "CrewAI"],
+    "pattern": "satellite-clusters",
+    "colors": {
+      "agar": "#fff3e0",
+      "primary": "#ff9800",
+      "secondary": "#f57c00",
+      "accent": "#ffe0b2"
+    }
+  },
+  {
+    "id": "vector-embedding",
+    "name": "Vector / Embedding",
+    "priority": 9,
+    "description": "Attacks targeting RAG knowledge bases and vector databases — poisoning embeddings, manipulating retrieval results, or injecting malicious content into the semantic space models search through.",
+    "whyItLooksThisWay": "A web of loosely connected nodes with fuzzy edges — embedding spaces are high-dimensional and uncertain, and so are the attack boundaries within them.",
+    "keywords": [
+      "embedding",
+      "vector",
+      "RAG",
+      "retrieval",
+      "knowledge base poison",
+      "semantic manipulation"
+    ],
+    "productDefaults": ["ChromaDB", "Pinecone", "Weaviate"],
+    "pattern": "web-nodes",
+    "colors": {
+      "agar": "#e8f5e9",
+      "primary": "#2e7d32",
+      "secondary": "#1b5e20",
+      "accent": "#a5d6a7"
+    }
+  }
+]
