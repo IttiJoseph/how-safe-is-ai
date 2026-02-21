@@ -1,0 +1,164 @@
+{
+  "lastUpdated": "2026-02-21T00:00:00Z",
+  "summary": {
+    "totalCVEs": 247,
+    "critical": 38,
+    "high": 89,
+    "medium": 94,
+    "low": 26,
+    "exploited": 12,
+    "patchedPercent": 61,
+    "quarterOverQuarterChange": 23.4
+  },
+  "categories": {
+    "prompt-injection": {
+      "totalCVEs": 42,
+      "critical": 9,
+      "high": 16,
+      "medium": 13,
+      "low": 4,
+      "patchedPercent": 55,
+      "trend": 31.2
+    },
+    "improper-output-handling": {
+      "totalCVEs": 28,
+      "critical": 5,
+      "high": 11,
+      "medium": 9,
+      "low": 3,
+      "patchedPercent": 71,
+      "trend": 12.5
+    },
+    "model-poisoning": {
+      "totalCVEs": 19,
+      "critical": 3,
+      "high": 7,
+      "medium": 7,
+      "low": 2,
+      "patchedPercent": 47,
+      "trend": 8.3
+    },
+    "data-leakage": {
+      "totalCVEs": 35,
+      "critical": 6,
+      "high": 14,
+      "medium": 12,
+      "low": 3,
+      "patchedPercent": 63,
+      "trend": 28.7
+    },
+    "denial-of-service": {
+      "totalCVEs": 44,
+      "critical": 4,
+      "high": 12,
+      "medium": 21,
+      "low": 7,
+      "patchedPercent": 82,
+      "trend": -5.2
+    },
+    "supply-chain": {
+      "totalCVEs": 38,
+      "critical": 7,
+      "high": 15,
+      "medium": 13,
+      "low": 3,
+      "patchedPercent": 68,
+      "trend": 41.3
+    },
+    "model-theft": {
+      "totalCVEs": 11,
+      "critical": 1,
+      "high": 4,
+      "medium": 5,
+      "low": 1,
+      "patchedPercent": 36,
+      "trend": 15.0
+    },
+    "agentic-autonomy": {
+      "totalCVEs": 22,
+      "critical": 2,
+      "high": 8,
+      "medium": 10,
+      "low": 2,
+      "patchedPercent": 41,
+      "trend": 67.8
+    },
+    "vector-embedding": {
+      "totalCVEs": 8,
+      "critical": 1,
+      "high": 2,
+      "medium": 4,
+      "low": 1,
+      "patchedPercent": 25,
+      "trend": 120.0
+    }
+  },
+  "cves": [
+    { "id": "CVE-2025-31201", "category": "prompt-injection", "product": "LangChain", "cvss": 9.4, "severity": "critical", "exploited": true, "patched": true, "published": "2025-11-03" },
+    { "id": "CVE-2025-29847", "category": "prompt-injection", "product": "LangChain", "cvss": 8.8, "severity": "high", "exploited": false, "patched": true, "published": "2025-09-17" },
+    { "id": "CVE-2025-33102", "category": "prompt-injection", "product": "AutoGPT", "cvss": 9.1, "severity": "critical", "exploited": true, "patched": false, "published": "2025-12-22" },
+    { "id": "CVE-2025-28456", "category": "prompt-injection", "product": "AutoGPT", "cvss": 7.5, "severity": "high", "exploited": false, "patched": true, "published": "2025-07-14" },
+    { "id": "CVE-2025-34891", "category": "prompt-injection", "product": "OpenAI Plugins", "cvss": 9.8, "severity": "critical", "exploited": true, "patched": true, "published": "2026-01-08" },
+    { "id": "CVE-2025-30221", "category": "prompt-injection", "product": "OpenAI Plugins", "cvss": 8.2, "severity": "high", "exploited": false, "patched": false, "published": "2025-10-11" },
+    { "id": "CVE-2025-27833", "category": "prompt-injection", "product": "CrewAI", "cvss": 7.8, "severity": "high", "exploited": false, "patched": false, "published": "2025-06-29" },
+    { "id": "CVE-2025-35102", "category": "prompt-injection", "product": "Anthropic API", "cvss": 6.5, "severity": "medium", "exploited": false, "patched": true, "published": "2026-02-01" },
+    { "id": "CVE-2025-29003", "category": "prompt-injection", "product": "Cohere", "cvss": 7.1, "severity": "high", "exploited": false, "patched": true, "published": "2025-08-22" },
+    { "id": "CVE-2025-32445", "category": "prompt-injection", "product": "LlamaIndex", "cvss": 8.5, "severity": "high", "exploited": false, "patched": false, "published": "2025-11-30" },
+
+    { "id": "CVE-2025-28901", "category": "improper-output-handling", "product": "LangChain", "cvss": 8.7, "severity": "high", "exploited": false, "patched": true, "published": "2025-08-05" },
+    { "id": "CVE-2025-31456", "category": "improper-output-handling", "product": "AutoGPT", "cvss": 9.2, "severity": "critical", "exploited": true, "patched": true, "published": "2025-10-19" },
+    { "id": "CVE-2025-33789", "category": "improper-output-handling", "product": "Semantic Kernel", "cvss": 7.4, "severity": "high", "exploited": false, "patched": true, "published": "2025-12-03" },
+    { "id": "CVE-2025-29567", "category": "improper-output-handling", "product": "OpenAI Plugins", "cvss": 8.1, "severity": "high", "exploited": false, "patched": true, "published": "2025-09-28" },
+    { "id": "CVE-2025-35234", "category": "improper-output-handling", "product": "CrewAI", "cvss": 6.8, "severity": "medium", "exploited": false, "patched": false, "published": "2026-01-15" },
+    { "id": "CVE-2025-27112", "category": "improper-output-handling", "product": "Haystack", "cvss": 7.9, "severity": "high", "exploited": false, "patched": true, "published": "2025-06-11" },
+
+    { "id": "CVE-2025-30567", "category": "model-poisoning", "product": "TensorFlow", "cvss": 9.0, "severity": "critical", "exploited": false, "patched": true, "published": "2025-10-08" },
+    { "id": "CVE-2025-28234", "category": "model-poisoning", "product": "TensorFlow", "cvss": 7.6, "severity": "high", "exploited": false, "patched": true, "published": "2025-07-22" },
+    { "id": "CVE-2025-32890", "category": "model-poisoning", "product": "PyTorch", "cvss": 8.3, "severity": "high", "exploited": false, "patched": false, "published": "2025-11-14" },
+    { "id": "CVE-2025-34123", "category": "model-poisoning", "product": "PyTorch", "cvss": 6.9, "severity": "medium", "exploited": false, "patched": false, "published": "2025-12-28" },
+    { "id": "CVE-2025-29678", "category": "model-poisoning", "product": "HuggingFace Transformers", "cvss": 7.2, "severity": "high", "exploited": false, "patched": true, "published": "2025-09-05" },
+
+    { "id": "CVE-2025-31890", "category": "data-leakage", "product": "Ollama", "cvss": 9.3, "severity": "critical", "exploited": true, "patched": true, "published": "2025-10-25" },
+    { "id": "CVE-2025-29123", "category": "data-leakage", "product": "Ollama", "cvss": 8.0, "severity": "high", "exploited": false, "patched": true, "published": "2025-09-12" },
+    { "id": "CVE-2025-33456", "category": "data-leakage", "product": "OpenAI API", "cvss": 7.7, "severity": "high", "exploited": false, "patched": true, "published": "2025-12-07" },
+    { "id": "CVE-2025-35567", "category": "data-leakage", "product": "LangChain", "cvss": 8.9, "severity": "high", "exploited": false, "patched": false, "published": "2026-02-10" },
+    { "id": "CVE-2025-27890", "category": "data-leakage", "product": "Anthropic API", "cvss": 6.2, "severity": "medium", "exploited": false, "patched": true, "published": "2025-06-18" },
+    { "id": "CVE-2025-30345", "category": "data-leakage", "product": "vLLM", "cvss": 7.4, "severity": "high", "exploited": false, "patched": false, "published": "2025-10-02" },
+    { "id": "CVE-2025-32111", "category": "data-leakage", "product": "HuggingFace Inference", "cvss": 9.1, "severity": "critical", "exploited": true, "patched": false, "published": "2025-11-20" },
+
+    { "id": "CVE-2025-28567", "category": "denial-of-service", "product": "TensorFlow", "cvss": 7.5, "severity": "high", "exploited": false, "patched": true, "published": "2025-07-30" },
+    { "id": "CVE-2025-30789", "category": "denial-of-service", "product": "TensorFlow", "cvss": 6.8, "severity": "medium", "exploited": false, "patched": true, "published": "2025-10-14" },
+    { "id": "CVE-2025-33890", "category": "denial-of-service", "product": "PyTorch", "cvss": 7.1, "severity": "high", "exploited": false, "patched": true, "published": "2025-12-11" },
+    { "id": "CVE-2025-29234", "category": "denial-of-service", "product": "PyTorch", "cvss": 5.5, "severity": "medium", "exploited": false, "patched": true, "published": "2025-08-19" },
+    { "id": "CVE-2025-31234", "category": "denial-of-service", "product": "ONNX Runtime", "cvss": 6.3, "severity": "medium", "exploited": false, "patched": true, "published": "2025-10-28" },
+    { "id": "CVE-2025-35890", "category": "denial-of-service", "product": "Triton Inference", "cvss": 8.0, "severity": "high", "exploited": false, "patched": true, "published": "2026-01-22" },
+    { "id": "CVE-2025-27456", "category": "denial-of-service", "product": "Ollama", "cvss": 5.8, "severity": "medium", "exploited": false, "patched": true, "published": "2025-06-03" },
+
+    { "id": "CVE-2025-32567", "category": "supply-chain", "product": "HuggingFace Hub", "cvss": 9.6, "severity": "critical", "exploited": true, "patched": true, "published": "2025-11-07" },
+    { "id": "CVE-2025-29890", "category": "supply-chain", "product": "HuggingFace Hub", "cvss": 8.4, "severity": "high", "exploited": false, "patched": true, "published": "2025-09-21" },
+    { "id": "CVE-2025-34567", "category": "supply-chain", "product": "MLflow", "cvss": 9.1, "severity": "critical", "exploited": true, "patched": false, "published": "2025-12-16" },
+    { "id": "CVE-2025-28678", "category": "supply-chain", "product": "MLflow", "cvss": 7.8, "severity": "high", "exploited": false, "patched": true, "published": "2025-08-08" },
+    { "id": "CVE-2025-31567", "category": "supply-chain", "product": "PyPI (ML packages)", "cvss": 8.7, "severity": "high", "exploited": false, "patched": true, "published": "2025-10-31" },
+    { "id": "CVE-2025-33234", "category": "supply-chain", "product": "Kubeflow", "cvss": 7.3, "severity": "high", "exploited": false, "patched": false, "published": "2025-12-05" },
+    { "id": "CVE-2025-35345", "category": "supply-chain", "product": "LangChain", "cvss": 8.0, "severity": "high", "exploited": false, "patched": true, "published": "2026-01-28" },
+    { "id": "CVE-2025-27234", "category": "supply-chain", "product": "Weights & Biases", "cvss": 6.5, "severity": "medium", "exploited": false, "patched": true, "published": "2025-05-27" },
+
+    { "id": "CVE-2025-33678", "category": "model-theft", "product": "Ollama", "cvss": 8.8, "severity": "high", "exploited": false, "patched": false, "published": "2025-12-19" },
+    { "id": "CVE-2025-30123", "category": "model-theft", "product": "vLLM", "cvss": 7.2, "severity": "high", "exploited": false, "patched": false, "published": "2025-10-06" },
+    { "id": "CVE-2025-35678", "category": "model-theft", "product": "Triton Inference", "cvss": 9.0, "severity": "critical", "exploited": false, "patched": false, "published": "2026-02-03" },
+    { "id": "CVE-2025-28890", "category": "model-theft", "product": "HuggingFace Inference", "cvss": 6.7, "severity": "medium", "exploited": false, "patched": true, "published": "2025-08-14" },
+
+    { "id": "CVE-2025-32234", "category": "agentic-autonomy", "product": "LangChain", "cvss": 9.2, "severity": "critical", "exploited": true, "patched": false, "published": "2025-11-11" },
+    { "id": "CVE-2025-29456", "category": "agentic-autonomy", "product": "LangChain", "cvss": 8.1, "severity": "high", "exploited": false, "patched": true, "published": "2025-09-08" },
+    { "id": "CVE-2025-34234", "category": "agentic-autonomy", "product": "AutoGPT", "cvss": 8.6, "severity": "high", "exploited": false, "patched": false, "published": "2025-12-24" },
+    { "id": "CVE-2025-31678", "category": "agentic-autonomy", "product": "AutoGPT", "cvss": 7.4, "severity": "high", "exploited": false, "patched": false, "published": "2025-10-22" },
+    { "id": "CVE-2025-35789", "category": "agentic-autonomy", "product": "CrewAI", "cvss": 7.9, "severity": "high", "exploited": false, "patched": false, "published": "2026-01-18" },
+    { "id": "CVE-2025-28123", "category": "agentic-autonomy", "product": "Semantic Kernel", "cvss": 6.3, "severity": "medium", "exploited": false, "patched": true, "published": "2025-07-17" },
+
+    { "id": "CVE-2025-34890", "category": "vector-embedding", "product": "ChromaDB", "cvss": 8.5, "severity": "high", "exploited": false, "patched": false, "published": "2025-12-30" },
+    { "id": "CVE-2025-31345", "category": "vector-embedding", "product": "ChromaDB", "cvss": 7.0, "severity": "high", "exploited": false, "patched": false, "published": "2025-10-16" },
+    { "id": "CVE-2025-33012", "category": "vector-embedding", "product": "Weaviate", "cvss": 9.0, "severity": "critical", "exploited": false, "patched": false, "published": "2025-11-25" },
+    { "id": "CVE-2025-29789", "category": "vector-embedding", "product": "Pinecone", "cvss": 6.1, "severity": "medium", "exploited": false, "patched": true, "published": "2025-09-14" },
+    { "id": "CVE-2025-35012", "category": "vector-embedding", "product": "LangChain (RAG)", "cvss": 5.8, "severity": "medium", "exploited": false, "patched": true, "published": "2026-01-05" }
+  ]
+}
