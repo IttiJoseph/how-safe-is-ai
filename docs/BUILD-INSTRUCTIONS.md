@@ -12,9 +12,22 @@ Step-by-step guide from setup to deployment. Everything runs in the browser — 
 
 You'll use **GitHub Codespaces** as your development environment — a full VS Code editor in your browser with a built-in terminal. The free tier includes 120 core-hours/month, which is more than enough.
 
+> **Already have VS Code + Claude Code installed locally?** You can skip Codespaces setup entirely and work directly from your machine. Clone the repo and run `claude` from the project root.
+
 ---
 
 ## Setup
+
+### Step 0: Copy CLAUDE.md to Repo Root
+
+Claude Code only auto-reads `CLAUDE.md` from the **repo root**. After uploading the spec files (Step 2), copy `docs/CLAUDE.md` to the repo root:
+
+1. On your repo page, click "Add file" → "Create new file"
+2. Name it `CLAUDE.md` (at root, not inside any folder)
+3. Paste the full contents of `docs/CLAUDE.md` into the editor
+4. Commit
+
+This ensures every Claude Code session starts with the full project spec loaded automatically.
 
 ### Step 1: Create the GitHub Repository
 
@@ -139,6 +152,8 @@ Final visual pass: subtle bench grain texture, smooth transitions, breathing ani
 
 ### Phase 6: Data Pipeline
 
+> **Get your NVD API key first.** The NVD API is rate-limited to 5 requests/30 sec without a key. A free key raises this to 50 requests/30 sec and makes the pipeline much faster. Request one at [nvd.nist.gov/developers/request-an-api-key](https://nvd.nist.gov/developers/request-an-api-key) — it activates within ~1 hour. Store it as a GitHub Actions secret named `NVD_API_KEY`.
+
 **Tell Claude Code:**
 > "Build Phase 6: Create the Python data pipeline script and GitHub Action workflow"
 
@@ -185,6 +200,18 @@ Not every phase needs heavy review. Here's where to spend your time:
 - **If you hit Claude Pro rate limits,** take a break. The rolling window resets every 5 hours.
 - **Use `/cost`** inside Claude Code to monitor your usage.
 - **If something breaks,** tell Claude Code "the site is broken, here's what I see" and paste any error messages from the browser console (F12 → Console tab).
+
+---
+
+## Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| `npm run dev` fails | Run `node --version` — must be ≥ 18. Upgrade Node if older. |
+| Python pipeline fails with `ModuleNotFoundError` | Run `pip install requests` in the terminal |
+| Claude Code doesn't know the project spec | Make sure `CLAUDE.md` exists at the repo root (see Step 0) |
+| GitHub Actions pipeline fails with 403 | Add `NVD_API_KEY` as a repo secret under Settings → Secrets |
+| Site 404 on GitHub Pages | Check Settings → Pages → Source is set to "GitHub Actions" |
 
 ---
 
