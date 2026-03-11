@@ -1,0 +1,94 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.wrapper[data-faded] {
+  opacity: 0.35;
+  filter: blur(1.5px);
+}
+
+.wrapper[data-selected] {
+  opacity: 1;
+  filter: none;
+}
+
+.wrapper:hover:not([data-faded]) .dish {
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.18),
+    0 2px 8px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Dish circle */
+.dish {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.12),
+    0 1px 4px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+  transition: box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+/* Glass rim — subtle gradient around edge */
+.rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 25%,
+    rgba(255,255,255,0.55) 0%,
+    rgba(255,255,255,0.08) 40%,
+    transparent 65%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Agar base — tinted translucent fill */
+.agar {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background-color: var(--agar-color, #f0ede6);
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* Label below dish */
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+}
+
+.name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.9rem;
+  color: #2a2a2a;
+  font-weight: 600;
+}
+
+.count {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.72rem;
+  color: #888;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 700px) {
+  .dish {
+    width: 160px;
+    height: 160px;
+  }
+}

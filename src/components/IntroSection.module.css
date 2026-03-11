@@ -1,0 +1,201 @@
+.intro {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+}
+
+.inner {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.headline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #1a1a1a;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+.why {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #3a3a3a;
+  margin-bottom: 48px;
+}
+
+/* How to read */
+.howToRead {
+  border-top: 1px solid #d4cebd;
+  border-bottom: 1px solid #d4cebd;
+  padding: 28px 0;
+  margin-bottom: 48px;
+}
+
+.howToReadTitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 32px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.legendDotLarge {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #c084b8;
+  opacity: 0.85;
+}
+
+.legendDotFaded {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c084b8 50%, #c084b880 50%);
+  opacity: 0.85;
+}
+
+.legendDotGlow {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e040a0;
+  box-shadow: 0 0 8px 3px #e040a060;
+}
+
+.legendZone {
+  flex-shrink: 0;
+  width: 28px;
+  height: 14px;
+  border-radius: 7px;
+  background: radial-gradient(circle at center, #c084b8 0%, #c084b820 100%);
+}
+
+/* Stats bar */
+.statsBar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  background: #edeae1;
+  border-radius: 8px;
+  padding: 20px 28px;
+  margin-bottom: 40px;
+}
+
+.statDivider {
+  width: 1px;
+  height: 36px;
+  background: #ccc9be;
+  margin: 0 24px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.statValue {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.statValue[data-accent='critical'] {
+  color: #c0392b;
+}
+
+.statValue[data-accent='exploited'] {
+  color: #e67e22;
+}
+
+.statValue[data-accent='rising'] {
+  color: #c0392b;
+}
+
+.statValue[data-accent='falling'] {
+  color: #27ae60;
+}
+
+.statLabel {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* Scroll hint */
+.scrollHint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.scrollArrow {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@media (max-width: 600px) {
+  .legend {
+    grid-template-columns: 1fr;
+  }
+
+  .statsBar {
+    gap: 16px;
+    padding: 16px 20px;
+  }
+
+  .statDivider {
+    display: none;
+  }
+}

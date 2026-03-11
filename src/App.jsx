@@ -14,7 +14,7 @@ export default function App() {
       <LabBench
         categories={categories}
         cves={sampleData.cves}
-        categoryStats={sampleData.categoryStats}
+        categoryStats={sampleData.categories}
         selectedDish={selectedDish}
         onSelectDish={setSelectedDish}
       />
