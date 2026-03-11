@@ -60,6 +60,14 @@
   border-radius: 50%;
   background-color: var(--agar-color, #f0ede6);
   opacity: 0.85;
+  z-index: 0;
+}
+
+/* Canvas layer — organisms rendered here, sits on top of agar */
+.canvas {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
   z-index: 1;
 }
 
