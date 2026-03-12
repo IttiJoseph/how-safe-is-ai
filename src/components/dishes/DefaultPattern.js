@@ -2,7 +2,7 @@
 // Fallback for all dishes without a unique pattern algorithm
 import {
   seededRandom, hashStr, computeProductClusters,
-  computeBlobShape, drawOrganicBlob, drawGlow,
+  computeBlobShape, drawOrganicBlob, drawSubtleRing,
   initParticles, drawParticles,
 } from '../../utils/rendering.js'
 
@@ -16,7 +16,7 @@ const ZONES = {
 
 export function draw(canvas, categoryData, options = {}) {
   if (!canvas) return
-  const { category, stats, cves } = categoryData
+  const { category, cves } = categoryData
   const { time = 0, scale = 1, state = {} } = options
 
   const size = canvas.width
@@ -50,8 +50,7 @@ export function draw(canvas, categoryData, options = {}) {
     if (blob.patched) ctx.restore()
 
     if (blob.exploited) {
-      const pulse = 0.42 + 0.42 * Math.sin((time / 850) * Math.PI * 2)
-      drawGlow(ctx, blob.x, blob.y, blob.r, blob.color, pulse)
+      drawSubtleRing(ctx, blob.x, blob.y, blob.r, blob.color)
     }
   }
 
@@ -74,14 +73,14 @@ function initState(state, cves, category, dishR, cx, cy) {
 
     const angle = rng() * Math.PI * 2
     const dist = (zMin + rng() * (zMax - zMin)) * dishR
-    const r = 9 + Math.sqrt(cluster.count / maxCount) * dishR * 0.30
+    const r = 12 + Math.sqrt(cluster.count / maxCount) * dishR * 0.40
 
     return {
       x: cx + Math.cos(angle) * dist,
       y: cy + Math.sin(angle) * dist,
-      r: Math.min(r, dishR * 0.36),
+      r: Math.min(r, dishR * 0.48),
       color: cluster.patchedFraction > 0.75 ? category.colors.secondary : category.colors.primary,
-      alpha: 0.52 + (1 - cluster.patchedFraction) * 0.38,
+      alpha: 0.78 + (1 - cluster.patchedFraction) * 0.18,
       patched: cluster.patchedFraction > 0.65,
       exploited: cluster.hasExploited,
       shape: computeBlobShape(8, seededRandom(hashStr(cluster.product))),

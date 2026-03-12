@@ -3,11 +3,25 @@ import { DishFilter, dishFilterId } from '../utils/filters.jsx'
 import { draw as drawDefault } from './dishes/DefaultPattern.js'
 import { draw as drawPromptInjection } from './dishes/PromptInjection.js'
 import { draw as drawSupplyChain } from './dishes/SupplyChain.js'
+import { draw as drawConcentricRings } from './dishes/ConcentricRings.js'
+import { draw as drawRandomSplatter } from './dishes/RandomSplatter.js'
+import { draw as drawCentralMassSpeckled } from './dishes/CentralMassSpeckled.js'
+import { draw as drawAggressiveOvergrowth } from './dishes/AggressiveOvergrowth.js'
+import { draw as drawBranchingVeins } from './dishes/BranchingVeins.js'
+import { draw as drawSatelliteClusters } from './dishes/SatelliteClusters.js'
+import { draw as drawWebNodes } from './dishes/WebNodes.js'
 import styles from './PetriDish.module.css'
 
 const DRAW_FNS = {
-  'radiating-tendrils': drawPromptInjection,
-  'scattered-colonies': drawSupplyChain,
+  'radiating-tendrils':    drawPromptInjection,
+  'scattered-colonies':    drawSupplyChain,
+  'concentric-rings':      drawConcentricRings,
+  'random-splatter':       drawRandomSplatter,
+  'central-mass-speckled': drawCentralMassSpeckled,
+  'aggressive-overgrowth': drawAggressiveOvergrowth,
+  'branching-veins':       drawBranchingVeins,
+  'satellite-clusters':    drawSatelliteClusters,
+  'web-nodes':             drawWebNodes,
 }
 
 function getDishDraw(pattern) {
@@ -36,7 +50,7 @@ export default function PetriDish({ category, cves, stats, isSelected, isFaded, 
 
     const loop = () => {
       const time = Date.now()
-      const scale = 1 + 0.028 * Math.sin((time / 4000) * Math.PI * 2)
+      const scale = 1 + 0.006 * Math.sin((time / 4000) * Math.PI * 2)
       drawFn(canvas, categoryData, { time, scale, highlight: null, state: stateRef.current })
       animRef.current = requestAnimationFrame(loop)
     }
@@ -58,6 +72,7 @@ export default function PetriDish({ category, cves, stats, isSelected, isFaded, 
         title={`${category.name} — ${stats.totalCVEs ?? 0} CVEs`}
       >
         <DishFilter categoryId={category.id} />
+        <div className={styles.agar} />
         <canvas
           ref={canvasRef}
           className={styles.canvas}

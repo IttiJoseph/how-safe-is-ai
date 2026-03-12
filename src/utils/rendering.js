@@ -63,6 +63,7 @@ export function computeBlobShape(n, rng) {
 }
 
 // Draw an organic blob using pre-computed shape (stable across frames)
+// Near-flat fill — solid shape, soft edge only, like real agar colonies
 export function drawOrganicBlob(ctx, cx, cy, r, color, alpha, shape) {
   const pts = shape.map(p => ({
     x: cx + Math.cos(p.angle) * r * p.jitter,
@@ -81,31 +82,66 @@ export function drawOrganicBlob(ctx, cx, cy, r, color, alpha, shape) {
   }
   ctx.closePath()
 
-  // Explicit rgba gradient to avoid black-fringe artifact with 'transparent'
   const [rr, gg, bb] = hexToRgb(color)
-  const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r)
-  grad.addColorStop(0, `rgb(${rr},${gg},${bb})`)
-  grad.addColorStop(1, `rgba(${rr},${gg},${bb},0)`)
+  // Flat solid fill — real agar colony, not a glowing orb
+  ctx.fillStyle = `rgb(${rr},${gg},${bb})`
+  ctx.fill()
+  // Colony rim — slightly darker stroke gives biological definition
+  ctx.strokeStyle = `rgba(${Math.round(rr*0.58)},${Math.round(gg*0.58)},${Math.round(bb*0.58)},0.42)`
+  ctx.lineWidth = 1.8
+  ctx.stroke()
+  ctx.restore()
+}
+
+// Static soft halo for exploited CVEs — no pulse, no screen blending
+export function drawSubtleRing(ctx, cx, cy, r, color) {
+  const [rr, gg, bb] = hexToRgb(color)
+  const grad = ctx.createRadialGradient(cx, cy, r * 0.6, cx, cy, r * 2.0)
+  grad.addColorStop(0,   `rgba(${rr},${gg},${bb},0.12)`)
+  grad.addColorStop(0.5, `rgba(${rr},${gg},${bb},0.06)`)
+  grad.addColorStop(1,   `rgba(${rr},${gg},${bb},0)`)
+  ctx.save()
   ctx.fillStyle = grad
+  ctx.beginPath()
+  ctx.arc(cx, cy, r * 2.0, 0, Math.PI * 2)
   ctx.fill()
   ctx.restore()
 }
 
-// Bioluminescent glow ring — 'screen' composite for additive light effect
-export function drawGlow(ctx, cx, cy, r, color, intensity) {
-  if (intensity <= 0.02) return
-  const [rr, gg, bb] = hexToRgb(color)
-  const grad = ctx.createRadialGradient(cx, cy, r * 0.15, cx, cy, r * 2.5)
-  grad.addColorStop(0, `rgba(${rr},${gg},${bb},${Math.min(intensity * 0.8, 1)})`)
-  grad.addColorStop(0.4, `rgba(${rr},${gg},${bb},${intensity * 0.25})`)
-  grad.addColorStop(1, `rgba(${rr},${gg},${bb},0)`)
-  ctx.save()
-  ctx.globalCompositeOperation = 'screen'
-  ctx.fillStyle = grad
-  ctx.beginPath()
-  ctx.arc(cx, cy, r * 2.5, 0, Math.PI * 2)
-  ctx.fill()
-  ctx.restore()
+// --- Color palette utilities ---
+
+// Blend a hex color toward white. t=0 → original, t=1 → white
+export function tintColor(hex, t) {
+  const [r, g, b] = hexToRgb(hex)
+  const ri = Math.round(r + (255 - r) * t)
+  const gi = Math.round(g + (255 - g) * t)
+  const bi = Math.round(b + (255 - b) * t)
+  return `#${ri.toString(16).padStart(2,'0')}${gi.toString(16).padStart(2,'0')}${bi.toString(16).padStart(2,'0')}`
+}
+
+// Blend a hex color toward black. t=0 → original, t=1 → black
+export function shadeColor(hex, t) {
+  const [r, g, b] = hexToRgb(hex)
+  const ri = Math.round(r * (1 - t))
+  const gi = Math.round(g * (1 - t))
+  const bi = Math.round(b * (1 - t))
+  return `#${ri.toString(16).padStart(2,'0')}${gi.toString(16).padStart(2,'0')}${bi.toString(16).padStart(2,'0')}`
+}
+
+// Generate count harmonious colors: shades + tints of primary, then secondary variants
+// Avoids near-white by using a dark→light range centered on the pure color
+export function generatePalette(primary, secondary, count) {
+  const steps = [
+    primary,
+    tintColor(primary, 0.38),
+    shadeColor(primary, 0.38),
+    tintColor(primary, 0.62),
+    shadeColor(primary, 0.58),
+    secondary,
+    tintColor(secondary, 0.38),
+    shadeColor(secondary, 0.32),
+  ]
+  return steps.slice(0, count)
 }
 
 // --- Particles ---
@@ -122,7 +158,7 @@ export function initParticles(count, dishR, rng) {
       phaseX: rng() * Math.PI * 2,
       phaseY: rng() * Math.PI * 2,
       size: 0.6 + rng() * 1.1,
-      alpha: 0.06 + rng() * 0.16,
+      alpha: 0.04 + rng() * 0.08,
     }
   })
 }

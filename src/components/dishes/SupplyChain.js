@@ -2,15 +2,9 @@
 // Colony size ∝ √(CVE count). Dark agar background. White particles.
 import {
   seededRandom, hashStr, computeProductClusters,
-  computeBlobShape, drawOrganicBlob, drawGlow,
-  hexToRgb, initParticles, drawParticles,
+  computeBlobShape, drawOrganicBlob, drawSubtleRing,
+  tintColor, initParticles, drawParticles,
 } from '../../utils/rendering.js'
-
-// Fixed 8-color palette for product colonies — vivid, distinct
-const COLONY_COLORS = [
-  '#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff',
-  '#ff6bcd', '#a855f7', '#06d6a0', '#f77f00',
-]
 
 export function draw(canvas, categoryData, options = {}) {
   if (!canvas) return
@@ -50,8 +44,7 @@ export function draw(canvas, categoryData, options = {}) {
     if (colony.patched) ctx.restore()
 
     if (colony.exploited) {
-      const pulse = 0.5 + 0.45 * Math.sin((time / 780) * Math.PI * 2)
-      drawGlow(ctx, colony.x, colony.y, colony.r, colony.color, pulse)
+      drawSubtleRing(ctx, colony.x, colony.y, colony.r, colony.color)
     }
   }
 
@@ -84,11 +77,23 @@ function initState(state, cves, category, dishR, cx, cy) {
   const maxCount = clusters[0]?.count || 1
   const topClusters = clusters.slice(0, 8)
 
-  const maxR = dishR * 0.28
-  const radii = topClusters.map(c => 8 + Math.sqrt(c.count / maxCount) * maxR)
+  const maxR = dishR * 0.36
+  const radii = topClusters.map(c => 10 + Math.sqrt(c.count / maxCount) * maxR)
   const minDist = Math.max(...radii) * 2.2
 
   const positions = poissonDisc(topClusters.length, dishR * 0.88, minDist, cx, cy, rng)
+  const p = category.colors.primary
+  const s = category.colors.secondary
+  const palette = [
+    p,
+    tintColor(p, 0.30),
+    tintColor(p, 0.55),
+    tintColor(p, 0.75),
+    s,
+    tintColor(s, 0.30),
+    tintColor(s, 0.55),
+    tintColor(p, 0.40),
+  ]
 
   state.colonies = topClusters.map((cluster, i) => {
     const pos = positions[i] || { x: cx, y: cy }
@@ -96,8 +101,8 @@ function initState(state, cves, category, dishR, cx, cy) {
       x: pos.x,
       y: pos.y,
       r: Math.min(radii[i], maxR),
-      color: COLONY_COLORS[i % COLONY_COLORS.length],
-      alpha: 0.72 + (1 - cluster.patchedFraction) * 0.22,
+      color: palette[i % palette.length],
+      alpha: 0.90 + (1 - cluster.patchedFraction) * 0.08,
       patched: cluster.patchedFraction > 0.65,
       exploited: cluster.hasExploited,
       shape: computeBlobShape(8, seededRandom(hashStr(cluster.product + '-sc'))),

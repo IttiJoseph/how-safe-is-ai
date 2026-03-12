@@ -17,7 +17,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #888;
+  color: rgba(255,255,255,0.70);
   margin-bottom: 16px;
 }
 
@@ -41,8 +41,8 @@
 
 /* How to read */
 .howToRead {
-  border-top: 1px solid #d4cebd;
-  border-bottom: 1px solid #d4cebd;
+  border-top: 1px solid rgba(255,255,255,0.30);
+  border-bottom: 1px solid rgba(255,255,255,0.30);
   padding: 28px 0;
   margin-bottom: 48px;
 }
@@ -52,7 +52,7 @@
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #888;
+  color: rgba(255,255,255,0.60);
   margin-bottom: 20px;
 }
 
@@ -68,7 +68,7 @@
   gap: 10px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.8rem;
-  color: #555;
+  color: #0d2535;
 }
 
 .legendDotLarge {
@@ -112,7 +112,7 @@
   align-items: center;
   gap: 0;
   flex-wrap: wrap;
-  background: #edeae1;
+  background: rgba(255,255,255,0.18);
   border-radius: 8px;
   padding: 20px 28px;
   margin-bottom: 40px;
@@ -121,7 +121,7 @@
 .statDivider {
   width: 1px;
   height: 36px;
-  background: #ccc9be;
+  background: rgba(255,255,255,0.30);
   margin: 0 24px;
 }
 
@@ -173,7 +173,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #aaa;
+  color: rgba(255,255,255,0.55);
 }
 
 .scrollArrow {

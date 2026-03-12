@@ -19,9 +19,11 @@
 
 .wrapper:hover:not([data-faded]) .dish {
   box-shadow:
-    0 8px 32px rgba(0,0,0,0.18),
-    0 2px 8px rgba(0,0,0,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.6);
+    0 0 0 7px rgba(255,255,255,0.96),
+    0 0 0 8.5px rgba(160,205,230,0.55),
+    0 14px 44px rgba(0,25,55,0.38),
+    0 5px 16px rgba(0,25,55,0.24),
+    0 24px 56px rgba(0,20,45,0.16);
 }
 
 /* Dish circle */
@@ -31,24 +33,47 @@
   height: 220px;
   border-radius: 50%;
   box-shadow:
-    0 4px 20px rgba(0,0,0,0.12),
-    0 1px 4px rgba(0,0,0,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.5);
+    /* white rim ring */
+    0 0 0 6px rgba(255,255,255,0.90),
+    /* faint blue outer glow defining the ring edge */
+    0 0 0 7.5px rgba(155,200,225,0.48),
+    /* main drop shadow — offset down */
+    0 10px 36px rgba(0,25,55,0.34),
+    /* close crisp shadow */
+    0 4px 12px rgba(0,25,55,0.22),
+    /* wide diffuse ambient shadow */
+    0 20px 52px rgba(0,18,42,0.14);
   transition: box-shadow 0.25s ease;
   overflow: hidden;
 }
 
-/* Glass rim — subtle gradient around edge */
+/* Glass highlights and inner depth — layered gradients */
 .rim {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 25%,
-    rgba(255,255,255,0.55) 0%,
-    rgba(255,255,255,0.08) 40%,
-    transparent 65%
-  );
+  background:
+    /* Primary crescent highlight — bright white arc upper-left */
+    radial-gradient(
+      ellipse 50% 36% at 28% 18%,
+      rgba(255,255,255,0.82) 0%,
+      rgba(255,255,255,0.52) 22%,
+      rgba(255,255,255,0.14) 52%,
+      transparent 72%
+    ),
+    /* Secondary soft sheen — lower right complement */
+    radial-gradient(
+      ellipse 30% 22% at 72% 80%,
+      rgba(255,255,255,0.12) 0%,
+      transparent 65%
+    ),
+    /* Inner vignette — darkens the rim edge for glass thickness */
+    radial-gradient(
+      circle at 50% 50%,
+      transparent 60%,
+      rgba(0,20,50,0.06) 76%,
+      rgba(0,20,50,0.20) 100%
+    );
   z-index: 2;
   pointer-events: none;
 }
@@ -83,14 +108,15 @@
 .name {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.9rem;
-  color: #2a2a2a;
+  color: #ffffff;
   font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,30,60,0.35);
 }
 
 .count {
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.72rem;
-  color: #888;
+  color: rgba(255,255,255,0.70);
   letter-spacing: 0.04em;
 }
 

@@ -28,7 +28,7 @@ export function DishFilter({ categoryId }) {
           <feDisplacementMap
             in="SourceGraphic"
             in2="noise"
-            scale="9"
+            scale="3"
             xChannelSelector="R"
             yChannelSelector="G"
           />

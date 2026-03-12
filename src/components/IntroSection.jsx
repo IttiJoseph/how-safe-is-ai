@@ -30,7 +30,7 @@ export default function IntroSection({ summary }) {
             </div>
             <div className={styles.legendItem}>
               <span className={styles.legendDotGlow} />
-              <span>Pulsing glow = actively exploited in the wild</span>
+              <span>Ring outline = actively exploited in the wild</span>
             </div>
             <div className={styles.legendItem}>
               <span className={styles.legendZone} />

@@ -2,7 +2,7 @@
 // Tendril count scales with CVE count. Exploited CVEs add glow at tendril tips.
 import {
   seededRandom, hashStr,
-  computeBlobShape, drawOrganicBlob, drawGlow,
+  computeBlobShape, drawOrganicBlob, drawSubtleRing,
   hexToRgb, initParticles, drawParticles,
 } from '../../utils/rendering.js'
 
@@ -40,18 +40,16 @@ export function draw(canvas, categoryData, options = {}) {
       strokePath(ctx, t.fork, t.width * 0.55, `rgba(${rr},${gg},${bb},0.42)`)
     }
     if (t.exploited) {
-      const pulse = 0.38 + 0.38 * Math.sin((time / 900) * Math.PI * 2)
       const tip = t.main[t.main.length - 1]
-      drawGlow(ctx, tip.x, tip.y, t.width * 4, category.colors.primary, pulse)
+      drawSubtleRing(ctx, tip.x, tip.y, t.width * 4, category.colors.primary)
     }
   }
 
   // Central blob on top
   drawOrganicBlob(ctx, cx, cy, state.centralR, category.colors.secondary, 0.92, state.centralShape)
 
-  // Ambient core glow
-  const corePulse = 0.22 + 0.14 * Math.sin((time / 3500) * Math.PI * 2)
-  drawGlow(ctx, cx, cy, state.centralR, category.colors.primary, corePulse)
+  // Static ambient ring around central mass
+  drawSubtleRing(ctx, cx, cy, state.centralR, category.colors.primary)
 
   drawParticles(ctx, cx, cy, category.colors.accent || category.colors.primary, state.particles, time)
 
